@@ -9,7 +9,7 @@ import 'package:foodie_restaurant/core/services/navigation_service.dart';
 import 'package:foodie_restaurant/core/services/shared_prefs_service.dart';
 import 'package:foodie_restaurant/core/services/snackbar_service.dart';
 import 'package:foodie_restaurant/models/restaurant.dart';
-import 'package:foodie_restaurant/pages/loader_page/loader_page.dart';
+import 'package:foodie_restaurant/pages/home_page/home_page.dart';
 import 'package:foodie_restaurant/pages/login_page/models/login_form_data.dart';
 
 class LoginPage extends StatefulWidget {

@@ -122,10 +122,10 @@ class HttpService {
 
   static Future<Response> dioMultiPartPost({
     required String endPoint,
-    Map<String, dynamic>? body,
-    List<MultipartFile> files = const [],
-    void Function(int, int)? onSendProgress,
-    void Function(int, int)? onReceiveProgress,
+    FormData? formData,
+    // List<MultipartFile> files = const [],
+    // void Function(int, int)? onSendProgress,
+    // void Function(int, int)? onReceiveProgress,
   }) async {
     Dio dio = Dio(
       BaseOptions(
@@ -138,22 +138,22 @@ class HttpService {
         },
       ),
     );
-    FormData formData = FormData.fromMap(body?.toStringStringMap() ?? {});
-    formData.files.addAll(
-      files.map(
-        (e) {
-          return MapEntry(
-            e.filename ?? '${RandomUuidGen.getRandomUuid()}.jpg',
-            e,
-          );
-        },
-      ).toList(),
-    );
+
+    // formData.files.addAll(
+    //   files.map(
+    //     (e) {
+    //       return MapEntry(
+    //         e.filename ?? '${RandomUuidGen.getRandomUuid()}.jpg',
+    //         e,
+    //       );
+    //     },
+    //   ).toList(),
+    // );
     Response response = await dio.post(
       '/$endPoint',
       data: formData,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
+      // onSendProgress: onSendProgress,
+      // onReceiveProgress: onReceiveProgress,
     );
     return response;
   }

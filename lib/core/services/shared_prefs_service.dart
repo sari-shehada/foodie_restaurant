@@ -18,6 +18,12 @@ class SharedPreferencesService {
     await plugin.setInt(key, value);
   }
 
+  Future<void> removeKey({
+    required String key,
+  }) async {
+    await plugin.remove(key);
+  }
+
   Future<void> setBool({
     required String key,
     required bool value,

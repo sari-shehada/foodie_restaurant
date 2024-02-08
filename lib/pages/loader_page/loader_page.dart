@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foodie_restaurant/core/services/navigation_service.dart';
 import 'package:foodie_restaurant/core/services/shared_prefs_service.dart';
+import 'package:foodie_restaurant/pages/home_page/home_page.dart';
 import 'package:foodie_restaurant/pages/login_page/login_page.dart';
 
 class LoaderPage extends StatelessWidget {
@@ -41,8 +42,9 @@ class LoaderPage extends StatelessWidget {
   }
 
   Future<void> loadApp(BuildContext context) async {
-    int? userId = SharedPreferencesService.instance.getInt('userId');
-    if (userId == null) {
+    int? restaurantId =
+        SharedPreferencesService.instance.getInt('restaurantId');
+    if (restaurantId == null) {
       NavigationService.pushAndPopAll(
         context,
         const LoginPage(),
@@ -53,15 +55,5 @@ class LoaderPage extends StatelessWidget {
       context,
       const HomePage(),
     );
-  }
-}
-
-//TODO:
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold();
   }
 }
