@@ -215,6 +215,12 @@ class _AddMealPageState extends State<AddMealPage> {
         // ignore: use_build_context_synchronously
         Navigator.pop(context);
       }
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 403) {
+        SnackBarService.showErrorSnackbar(
+          'Your subscription has expired! Please get in touch with one of the admins to extend it',
+        );
+      }
     } catch (e) {
       SnackBarService.showErrorSnackbar('Error Occurred');
     }
